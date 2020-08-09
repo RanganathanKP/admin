@@ -1,4 +1,4 @@
-package com.spares.admin.applicaiton;
+package com.spares.admin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
