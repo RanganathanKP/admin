@@ -1,13 +1,13 @@
 package com.spares.admin.entity;
 
-import org.hibernate.annotations.UpdateTimestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
+
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity(name = "product")
 public class productEntity {

@@ -2,11 +2,6 @@ package com.spares.admin.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
-
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity(name = "user")
 public class UserEntity {
