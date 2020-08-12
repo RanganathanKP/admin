@@ -1,36 +1,59 @@
 package com.spares.admin.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "user")
 public class UserEntity {
 	
 	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Integer userId;
+	@Column(name="user_name")
 	private String userName;
+	@Column(name="company_name")
 	private String companyName;
-	private String contactNumber;
+	@Column(name="contact_no")
+	private String contact_no;
+	@Column(name="address")
 	private String address;
+	@Column(name="state")
 	private String state;
+	@Column(name="country")
 	private String country;
-	private String dateOfBirth;
+	@Column(name="dob")
+	private String dob;
+	@Column(name="user_role")
 	private String userRole;
-	private String emailAddress;
+	@Column(name="email_id")
+	private String email_id;
+	@Column(name="password")
 	private String password;
+	@Column(name="active")
+	private boolean active;
+	
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 	public UserEntity(Integer userId, String userName, String companyName, String contactNumber, String address,
 			String state, String country, String dateOfBirth, String userRole, String emailAddress, String password) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.companyName = companyName;
-		this.contactNumber = contactNumber;
+		this.contact_no = contactNumber;
 		this.address = address;
 		this.state = state;
 		this.country = country;
-		this.dateOfBirth = dateOfBirth;
+		this.dob = dateOfBirth;
 		this.userRole = userRole;
-		this.emailAddress = emailAddress;
+		this.email_id = emailAddress;
 		this.password = password;
 	}
 	public UserEntity() {
@@ -55,10 +78,10 @@ public class UserEntity {
 		this.companyName = companyName;
 	}
 	public String getContactNumber() {
-		return contactNumber;
+		return contact_no;
 	}
 	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
+		this.contact_no = contactNumber;
 	}
 	public String getAddress() {
 		return address;
@@ -79,10 +102,10 @@ public class UserEntity {
 		this.country = country;
 	}
 	public String getDateOfBirth() {
-		return dateOfBirth;
+		return dob;
 	}
 	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+		this.dob = dateOfBirth;
 	}
 	public String getUserRole() {
 		return userRole;
@@ -91,10 +114,10 @@ public class UserEntity {
 		this.userRole = userRole;
 	}
 	public String getEmailAddress() {
-		return emailAddress;
+		return email_id;
 	}
 	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+		this.email_id = emailAddress;
 	}
 	public String getPassword() {
 		return password;
