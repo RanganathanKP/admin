@@ -62,7 +62,7 @@ public class UserController {
 	}
 
 
-	@PutMapping("admin/getAllUser")
+	@GetMapping("admin/getAllUser")
 	public List<UserEntity> findAllUserByAdmin(@RequestHeader String Authorization ){
 		return userRepo.findAll();
 	}
@@ -77,7 +77,7 @@ public class UserController {
 
 	@GetMapping("/user/geProduct")
 	@ResponseBody
-	public List<productEntity> findAllProduct(@RequestHeader String Authorization ){
+	public List<productEntity> findAllProduct(){
 		return productRepository.findAll();
 	}
 
@@ -98,23 +98,4 @@ public class UserController {
 	public List<OrderDetailEntity> getOrderdetail(@RequestHeader String Authorization ){
 		return orderDetailRepository.findAll();
 	}
-	
-	/*@PostMapping("/authenticate")
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
-		try {
-		authManager.authenticate(
-				new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
-				);
-		}catch(BadCredentialsException e) {
-			throw new Exception("Incorrect Username and passowrd");
-		}
-		
-		final UserDetails userDetails = myuserDetailsService
-				.loadUserByUsername(authenticationRequest.getUsername());
-		
-		final String jwt = jwtUtil.generateToken(userDetails);
-		
-		return ResponseEntity.ok(new AuthenticationResponse(jwt));
-	}*/
-
 }
