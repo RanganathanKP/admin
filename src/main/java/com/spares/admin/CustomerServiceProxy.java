@@ -16,11 +16,13 @@ import java.util.List;
 public interface CustomerServiceProxy {
 
 
-    @PostMapping("/customer/allRating")
+    @GetMapping("/sparecustomer/customer/allRating")
     @ResponseBody
-    public ResponseEntity<List<RatingDTO>> allRating();
+    public ResponseEntity<List<RatingDTO>> getAllRating();
 
-    @GetMapping("customer/getOrderDetail/{orderDetailID}")
+
+
+    @GetMapping("/sparecustomer/customer/getOrderDetail/{orderDetailID}")
     @ResponseBody
     public  ResponseEntity<OrderDetailEntity>getorderdetail(@PathVariable Integer orderDetailID);
 

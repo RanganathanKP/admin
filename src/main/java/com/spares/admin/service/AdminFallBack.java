@@ -6,9 +6,11 @@ import com.spares.admin.DealerServiceProxy;
 import com.spares.admin.entity.OrderDetailEntity;
 import com.spares.admin.entity.ProductEntity;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,18 +19,18 @@ public class AdminFallBack implements DealerServiceProxy, CustomerServiceProxy {
 
 
     @Override
-    public ResponseEntity<List<RatingDTO>> allRating() {
-        return null;
+    public ResponseEntity<List<RatingDTO>> getAllRating() {
+        return new ResponseEntity<>(new ArrayList<RatingDTO>(), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<OrderDetailEntity> getorderdetail(Integer orderDetailID) {
-        return null;
+        return new ResponseEntity<>(new OrderDetailEntity(), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<List<ProductEntity>> findAllProduct() {
-        return null;
+        return new ResponseEntity<>(new ArrayList<ProductEntity>(), HttpStatus.OK);
     }
 
     @Override

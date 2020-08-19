@@ -18,7 +18,7 @@ import com.spares.admin.repository.UserRepository;
 import com.spares.admin.service.MyUserDetailsService;
 
 
-
+@RequestMapping("/admin")
 @RestController
 public class UserController {
 
