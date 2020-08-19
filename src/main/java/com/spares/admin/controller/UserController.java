@@ -2,13 +2,16 @@ package com.spares.admin.controller;
 
 import java.util.List;
 
+import com.spares.admin.DTO.RatingDTO;
+import com.spares.admin.entity.OrderDetailEntity;
+import com.spares.admin.entity.ProductEntity;
+import com.spares.admin.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 import com.spares.admin.entity.UserEntity;
 import com.spares.admin.repository.UserRepository;
@@ -21,20 +24,43 @@ public class UserController {
 
 	@Autowired
 	private UserRepository userRepo;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	private AdminService adminService;
+
 
 	@Autowired
 	private MyUserDetailsService myuserDetailsService;
 
-	@GetMapping("user/getAllUser")
+
+	@GetMapping("/findAllProduct")
 	@ResponseBody
-	public List<UserEntity> findAllUser(){
-		return userRepo.findAll();
+	public ResponseEntity<List<ProductEntity>> findAllProduct(@RequestParam(value="userID",required = false) Integer userid){
+		List<ProductEntity> productResponse= adminService.viewAllProduct(userid);
+		return new ResponseEntity<>(productResponse, HttpStatus.OK);
 	}
 
-	@PostMapping("/saveUser")
+	@GetMapping("/findNewProduct")
 	@ResponseBody
-	public UserEntity saveUser(@RequestBody UserEntity user ){
-		return userRepo.save(user);
+	public ResponseEntity<List<ProductEntity>> findNewProduct(@RequestParam(value="userID",required = false) Integer userid){
+		List<ProductEntity> productResponse= adminService.viewLatestProduct(userid);
+		return new ResponseEntity<>(productResponse, HttpStatus.OK);
+	}
+
+	@GetMapping("/getrating")
+	@ResponseBody
+	public  ResponseEntity<List<RatingDTO>> getRatingByProductID(@RequestParam(value="productid",required = false) Integer productid  ){
+		List<RatingDTO> response= adminService.viewRating(productid);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	@GetMapping("/getOrderDetail/{orderDetailID}")
+	@ResponseBody
+	public  ResponseEntity<OrderDetailEntity>getorderdetail(@PathVariable int orderDetailID){
+		OrderDetailEntity response= adminService.getorderdetail(orderDetailID);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 }

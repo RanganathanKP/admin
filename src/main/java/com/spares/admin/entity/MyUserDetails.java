@@ -21,13 +21,15 @@ public class MyUserDetails implements UserDetails{
         this.userName = user.getUserName();
         this.password = user.getPassword();
         this.active = user.isActive();
-        this.authorities = Arrays.stream(user.getUserRole().split(","))
+        this.authorities = Arrays.stream(user.getUserRole().split(",")).map(role -> "ROLE_".concat(role))
                     .map(SimpleGrantedAuthority::new)
                     .collect(Collectors.toList());
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        System.out.println("auth"+authorities.get(0).getAuthority().toString());
         return authorities;
     }
 
