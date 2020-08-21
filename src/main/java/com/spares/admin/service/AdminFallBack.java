@@ -20,7 +20,7 @@ public class AdminFallBack implements DealerServiceProxy, CustomerServiceProxy {
 
     @Override
     public ResponseEntity<List<RatingDTO>> getAllRating() {
-        return new ResponseEntity<>(new ArrayList<RatingDTO>(), HttpStatus.OK);
+        return new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class AdminFallBack implements DealerServiceProxy, CustomerServiceProxy {
 
     @Override
     public ResponseEntity<List<ProductEntity>> findAllProduct() {
-        return new ResponseEntity<>(new ArrayList<ProductEntity>(), HttpStatus.OK);
+        return new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
     }
 
     @Override
